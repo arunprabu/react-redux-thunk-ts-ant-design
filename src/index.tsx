@@ -1,13 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.less';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+//import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux'; 
+
+//import rootReducers from './reducers'; 
+//import logger from 'redux-logger'; // npm i redux-logger 
+//import thunk from 'redux-thunk';  //npm i redux-thunk
+  
+//const store = createStore( rootReducers, applyMiddleware(thunk, logger) );  //this needs a special argument called 'reducer'
+
+// instead of the above few steps we can do the following 
+import {store} from './store/configureStore';
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}> 
     <App />
-  </React.StrictMode>,
+  </Provider>
+  ,
   document.getElementById('root')
 );
 
